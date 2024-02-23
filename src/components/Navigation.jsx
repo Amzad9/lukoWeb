@@ -1,11 +1,25 @@
 import React from 'react'
-
+import { FaBars } from "react-icons/fa";
+import { useSelector, useDispatch } from 'react-redux'
+import { setSideNavigation } from '../store/slices/state'
 const Navigation =() => {
+    const sideNavigation = useSelector((state) => state.commonState.sideNavigation)
+    const dispatch = useDispatch()
+    const handleToggleNavigation = () => {
+        dispatch(setSideNavigation());
+    };
     return (
         <div>
             <div className="navbar bg-base-100">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    {!sideNavigation ? (
+                    <button className="btn btn-circle flex justify-center text-xl  md:hidden" onClick={handleToggleNavigation}>
+                    <FaBars />
+                    </button>
+                    ) : <a className="btn btn-ghost text-xl">
+                   Admin Dashboard
+                    </a> }
+    
                 </div>
                 <div className="flex-none gap-2">
                     <div className="form-control">

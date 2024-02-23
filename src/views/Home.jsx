@@ -6,9 +6,9 @@ function Home() {
     return (
         <div>
             <div className='flex'>
-                <div className='w-64'>
+             
                     <SideNavigation />
-                </div>
+                
                 <div className='w-full'>
                     <Navigation />
                     <div className='px-8'>

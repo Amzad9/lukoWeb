@@ -7,7 +7,8 @@ import { FaRegEdit } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
 const paginatorLeft = <button type="button" className='btn'><IoIosRefresh /></button>;
 const paginatorRight = <span type="button" icon="pi pi-download" />;
-function table({data, updateCategory, deleteCategory, drawerId}) {
+function table({data, updateCategory, deleteCategory, drawerId, isProduct= false}) {
+    console.log({isProduct})
     const actionBodyTemplate = (item) => {
         return (
             <div className="flex align-items-center gap-2">
@@ -27,9 +28,19 @@ function table({data, updateCategory, deleteCategory, drawerId}) {
         <Column field="image" header="Image" body={imageBodyTemplate} style={{ width: '10%' }}></Column>
         <Column field="name" header="Name" sortable style={{ width: '25%' }}></Column>
         <Column field="description" header="Description" style={{ width: '40%' }}></Column>
+        {isProduct && (<Column field="brand" header="brand" sortable style={{ width: '25%' }}></Column> )}
+        {isProduct && (<Column field="price" header="price" sortable style={{ width: '25%' }}></Column> )}
+
+        {isProduct && (<Column field="image_url" header="image_url" sortable style={{ width: '25%' }}></Column>)}
+        {isProduct && (<Column field="stock_quantity" header="stock_quantity" sortable style={{ width: '25%' }}></Column>)}
         <Column field="" header="Action" body={actionBodyTemplate} style={{ width: '25%' }}></Column>
     </DataTable>
   )
 }
 
 export default table
+
+// 
+// 
+// 
+// 
